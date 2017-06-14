@@ -18,7 +18,10 @@ namespace JournalPro
         public Form1()
         {
             InitializeComponent();
-                    }
+            StreamReader sr = File.OpenText("default.jjf");
+            if (!FullLoad(sr)) MessageBox.Show("The file you are trying to load from is corrupt or is not a valid JournalPro journal file", "You done goofed son!");
+            sr.Dispose();
+        }
 
         private void SaveSignature(StreamWriter sw)
         {
@@ -155,9 +158,6 @@ namespace JournalPro
         private void button_load_Click(object sender, EventArgs e)
         {
             ProjectList.Clear();
-            StreamReader sr = File.OpenText("default.jjf");
-            if (!FullLoad(sr)) MessageBox.Show("The file you are trying to load from is corrupt or is not a valid JournalPro journal file", "You done goofed son!");
-            sr.Dispose();
         }
 
         private void button_AddProject_Click(object sender, EventArgs e)
@@ -172,6 +172,17 @@ namespace JournalPro
             {
                 listView1.Items.Add(p.name);
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDown1.Maximum = ProjectList.Count - 1;
+            NewEntryProject_textbox.Text = ProjectList[(int)numericUpDown1.Value].name;
+        }
+
+        private void button_addEntry_Click(object sender, EventArgs e)
+        {
+            ProjectList[(int)numericUpDown1.Value].entryList.Add(new Entry(ProjectList[(int)numericUpDown1.Value].entryList.Count, ProjectList[(int)numericUpDown1.Value], textBox1.Text));
         }
     }
 }

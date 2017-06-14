@@ -37,20 +37,22 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.NewEntryPage = new System.Windows.Forms.TabPage();
             this.button_addEntry = new System.Windows.Forms.Button();
-            this.ProjectList_NewEntry = new System.Windows.Forms.ComboBox();
             this.NewProjectPage = new System.Windows.Forms.TabPage();
+            this.button_AddProject = new System.Windows.Forms.Button();
             this.textbox_ProjectName = new System.Windows.Forms.TextBox();
             this.ViewEntryPage = new System.Windows.Forms.TabPage();
             this.ViewProjectPage = new System.Windows.Forms.TabPage();
-            this.projectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button_AddProject = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.button_PopulateProjectList = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.projectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.NewEntryProject_textbox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.NewEntryPage.SuspendLayout();
             this.NewProjectPage.SuspendLayout();
             this.ViewProjectPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // button_save
@@ -114,8 +116,9 @@
             // 
             // NewEntryPage
             // 
+            this.NewEntryPage.Controls.Add(this.NewEntryProject_textbox);
+            this.NewEntryPage.Controls.Add(this.numericUpDown1);
             this.NewEntryPage.Controls.Add(this.button_addEntry);
-            this.NewEntryPage.Controls.Add(this.ProjectList_NewEntry);
             this.NewEntryPage.Controls.Add(this.textBox1);
             this.NewEntryPage.Controls.Add(this.label1);
             this.NewEntryPage.Controls.Add(this.label2);
@@ -135,14 +138,7 @@
             this.button_addEntry.TabIndex = 7;
             this.button_addEntry.Text = "Add Entry";
             this.button_addEntry.UseVisualStyleBackColor = true;
-            // 
-            // ProjectList_NewEntry
-            // 
-            this.ProjectList_NewEntry.FormattingEnabled = true;
-            this.ProjectList_NewEntry.Location = new System.Drawing.Point(3, 19);
-            this.ProjectList_NewEntry.Name = "ProjectList_NewEntry";
-            this.ProjectList_NewEntry.Size = new System.Drawing.Size(182, 21);
-            this.ProjectList_NewEntry.TabIndex = 6;
+            this.button_addEntry.Click += new System.EventHandler(this.button_addEntry_Click);
             // 
             // NewProjectPage
             // 
@@ -156,6 +152,16 @@
             this.NewProjectPage.Text = "New Project";
             this.NewProjectPage.UseVisualStyleBackColor = true;
             // 
+            // button_AddProject
+            // 
+            this.button_AddProject.Location = new System.Drawing.Point(193, 6);
+            this.button_AddProject.Name = "button_AddProject";
+            this.button_AddProject.Size = new System.Drawing.Size(76, 22);
+            this.button_AddProject.TabIndex = 1;
+            this.button_AddProject.Text = "Add Project";
+            this.button_AddProject.UseVisualStyleBackColor = true;
+            this.button_AddProject.Click += new System.EventHandler(this.button_AddProject_Click);
+            // 
             // textbox_ProjectName
             // 
             this.textbox_ProjectName.Location = new System.Drawing.Point(6, 6);
@@ -167,7 +173,7 @@
             // 
             this.ViewEntryPage.Location = new System.Drawing.Point(4, 22);
             this.ViewEntryPage.Name = "ViewEntryPage";
-            this.ViewEntryPage.Size = new System.Drawing.Size(446, 235);
+            this.ViewEntryPage.Size = new System.Drawing.Size(275, 235);
             this.ViewEntryPage.TabIndex = 2;
             this.ViewEntryPage.Text = "View Entries";
             this.ViewEntryPage.UseVisualStyleBackColor = true;
@@ -183,29 +189,6 @@
             this.ViewProjectPage.Text = "View Projects";
             this.ViewProjectPage.UseVisualStyleBackColor = true;
             // 
-            // projectBindingSource
-            // 
-            this.projectBindingSource.DataSource = typeof(JournalPro.Project);
-            // 
-            // button_AddProject
-            // 
-            this.button_AddProject.Location = new System.Drawing.Point(193, 6);
-            this.button_AddProject.Name = "button_AddProject";
-            this.button_AddProject.Size = new System.Drawing.Size(76, 22);
-            this.button_AddProject.TabIndex = 1;
-            this.button_AddProject.Text = "Add Project";
-            this.button_AddProject.UseVisualStyleBackColor = true;
-            this.button_AddProject.Click += new System.EventHandler(this.button_AddProject_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(198, 229);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
-            // 
             // button_PopulateProjectList
             // 
             this.button_PopulateProjectList.Location = new System.Drawing.Point(204, 3);
@@ -216,11 +199,39 @@
             this.button_PopulateProjectList.UseVisualStyleBackColor = true;
             this.button_PopulateProjectList.Click += new System.EventHandler(this.button_PopulateProjectList_Click);
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(3, 3);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(198, 229);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            // 
+            // projectBindingSource
+            // 
+            this.projectBindingSource.DataSource = typeof(JournalPro.Project);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(9, 22);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(36, 20);
+            this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // NewEntryProject_textbox
+            // 
+            this.NewEntryProject_textbox.Location = new System.Drawing.Point(51, 22);
+            this.NewEntryProject_textbox.Name = "NewEntryProject_textbox";
+            this.NewEntryProject_textbox.Size = new System.Drawing.Size(134, 20);
+            this.NewEntryProject_textbox.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 314);
+            this.ClientSize = new System.Drawing.Size(303, 314);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button_load);
             this.Controls.Add(this.button_save);
@@ -233,6 +244,7 @@
             this.NewProjectPage.PerformLayout();
             this.ViewProjectPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,13 +261,14 @@
         private System.Windows.Forms.TabPage NewProjectPage;
         private System.Windows.Forms.TabPage ViewEntryPage;
         private System.Windows.Forms.TabPage ViewProjectPage;
-        private System.Windows.Forms.ComboBox ProjectList_NewEntry;
         private System.Windows.Forms.Button button_addEntry;
         private System.Windows.Forms.TextBox textbox_ProjectName;
         private System.Windows.Forms.BindingSource projectBindingSource;
         private System.Windows.Forms.Button button_AddProject;
         private System.Windows.Forms.Button button_PopulateProjectList;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.TextBox NewEntryProject_textbox;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 

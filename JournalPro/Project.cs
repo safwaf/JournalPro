@@ -17,7 +17,6 @@ namespace JournalPro
             number = pNumber;
             name = pName;
         }
-
         public Project()
         {
 
