@@ -11,6 +11,7 @@ namespace JournalPro
         public int number;
         public Project project;
         public string text;
+        public string name;
 
         public Entry(int EntryNumber, Project EntryProject, string EntryText)
         {

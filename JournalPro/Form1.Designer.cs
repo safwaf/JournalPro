@@ -36,6 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.NewEntryPage = new System.Windows.Forms.TabPage();
+            this.NewEntryProject_textbox = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button_addEntry = new System.Windows.Forms.Button();
             this.NewProjectPage = new System.Windows.Forms.TabPage();
             this.button_AddProject = new System.Windows.Forms.Button();
@@ -45,14 +47,17 @@
             this.button_PopulateProjectList = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.projectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.NewEntryProject_textbox = new System.Windows.Forms.TextBox();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.Project = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Entry = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.NewEntryPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.NewProjectPage.SuspendLayout();
+            this.ViewEntryPage.SuspendLayout();
             this.ViewProjectPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // button_save
@@ -77,17 +82,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 59);
+            this.textBox1.Location = new System.Drawing.Point(6, 126);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(260, 163);
+            this.textBox1.Size = new System.Drawing.Size(260, 96);
             this.textBox1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 43);
+            this.label1.Location = new System.Drawing.Point(58, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 3;
@@ -116,6 +121,7 @@
             // 
             // NewEntryPage
             // 
+            this.NewEntryPage.Controls.Add(this.label3);
             this.NewEntryPage.Controls.Add(this.NewEntryProject_textbox);
             this.NewEntryPage.Controls.Add(this.numericUpDown1);
             this.NewEntryPage.Controls.Add(this.button_addEntry);
@@ -129,6 +135,21 @@
             this.NewEntryPage.TabIndex = 0;
             this.NewEntryPage.Text = "New Entry";
             this.NewEntryPage.UseVisualStyleBackColor = true;
+            // 
+            // NewEntryProject_textbox
+            // 
+            this.NewEntryProject_textbox.Location = new System.Drawing.Point(51, 22);
+            this.NewEntryProject_textbox.Name = "NewEntryProject_textbox";
+            this.NewEntryProject_textbox.Size = new System.Drawing.Size(134, 20);
+            this.NewEntryProject_textbox.TabIndex = 9;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(9, 22);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(36, 20);
+            this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // button_addEntry
             // 
@@ -171,6 +192,7 @@
             // 
             // ViewEntryPage
             // 
+            this.ViewEntryPage.Controls.Add(this.listView2);
             this.ViewEntryPage.Location = new System.Drawing.Point(4, 22);
             this.ViewEntryPage.Name = "ViewEntryPage";
             this.ViewEntryPage.Size = new System.Drawing.Size(275, 235);
@@ -212,20 +234,33 @@
             // 
             this.projectBindingSource.DataSource = typeof(JournalPro.Project);
             // 
-            // numericUpDown1
+            // listView2
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(9, 22);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(36, 20);
-            this.numericUpDown1.TabIndex = 8;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Project,
+            this.Entry});
+            this.listView2.Location = new System.Drawing.Point(3, 3);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(269, 229);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
             // 
-            // NewEntryProject_textbox
+            // Project
             // 
-            this.NewEntryProject_textbox.Location = new System.Drawing.Point(51, 22);
-            this.NewEntryProject_textbox.Name = "NewEntryProject_textbox";
-            this.NewEntryProject_textbox.Size = new System.Drawing.Size(134, 20);
-            this.NewEntryProject_textbox.TabIndex = 9;
+            this.Project.Text = "Project";
+            // 
+            // Entry
+            // 
+            this.Entry.Text = "Entry";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "label3";
             // 
             // Form1
             // 
@@ -240,11 +275,12 @@
             this.tabControl1.ResumeLayout(false);
             this.NewEntryPage.ResumeLayout(false);
             this.NewEntryPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.NewProjectPage.ResumeLayout(false);
             this.NewProjectPage.PerformLayout();
+            this.ViewEntryPage.ResumeLayout(false);
             this.ViewProjectPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,6 +305,10 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TextBox NewEntryProject_textbox;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader Project;
+        private System.Windows.Forms.ColumnHeader Entry;
+        private System.Windows.Forms.Label label3;
     }
 }
 
